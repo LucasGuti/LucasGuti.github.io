@@ -30,17 +30,6 @@ function revisarMail(input) {
     }
 }
 
-function revisarNumero(input) {
-    if (isNaN(input.value) || input.value == "") {
-        input.className = "form-control is-invalid"
-        return false;
-
-    } else {
-        input.className = "form-control is-valid";
-        return true;
-    }
-}
-
 function revisarLongitud(input) {
     if (input.value != "" && input.value.length >= 10) {
         input.className = "form-control is-valid"
@@ -51,31 +40,13 @@ function revisarLongitud(input) {
     }
 }
 
-//busco el evento
-let revisarTerminos = document.getElementById(`terminos`);
-
-//agregar un evento
-revisarTerminos.addEventListener("change", verificarCheckbox);
-
-function verificarCheckbox() {
-    if (revisarTerminos.checked) {
-        revisarTerminos.className = "form-check-input is-valid"
-        return true;
-    } else {
-        revisarTerminos.className = "form-check-input is-invalid"
-        return false;
-    }
-}
-
 function validar(event) {
     event.preventDefault();
     console.log("dentro de la funcion validar");
 
     if (revisar(document.getElementById("nombre")) &&
         revisarMail(document.getElementById("mail")) &&
-        revisarNumero(document.getElementById("telefono")) &&
-        revisarLongitud(document.getElementById("consulta")) &&
-        verificarCheckbox()
+        revisarLongitud(document.getElementById("consulta"))
     ) {
         enviarMail();
     } else {
